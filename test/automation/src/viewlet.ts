@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { Code } from './code';
+import { Code } from <Code>
 
 export abstract class Viewlet {
 

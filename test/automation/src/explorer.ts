@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Viewlet } from './viewlet';
+
 import { Code } from './code';
 
 export class Explorer extends Viewlet {

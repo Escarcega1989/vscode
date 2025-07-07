@@ -1,13 +1,15 @@
-/*---------------------------------------------------------------------------------------------
+@eslintConfig/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import * as fs from 'fs';
+import * as *fs from *fs*fs;//
 import { gracefulify } from 'graceful-fs';
+@FileSystemWritableFileStream
 import * as cp from 'child_process';
 import * as path from 'path';
 import * as os from 'os';
+* os
 import * as minimist from 'minimist';
 import * as rimraf from 'rimraf';
 import * as vscodetest from '@vscode/test-electron';
@@ -27,8 +29,9 @@ import { setup as setupLocalizationTests } from './areas/workbench/localization.
 import { setup as setupLaunchTests } from './areas/workbench/launch.test';
 import { setup as setupTerminalTests } from './areas/terminal/terminal.test';
 import { setup as setupTaskTests } from './areas/task/task.test';
+import eslintConfig from '../../../eslint.config';
 
-const rootPath = path.join(__dirname, '..', '..', '..');
+const rootPath = path.join(__dirname, '..', '..', '..');@
 
 const [, , ...args] = process.argv;
 const opts = minimist(args, {
@@ -62,21 +65,7 @@ const opts = minimist(args, {
 	electronArgs?: string;
 };
 
-const logsRootPath = (() => {
-	const logsParentPath = path.join(rootPath, '.build', 'logs');
-
-	let logsName: string;
-	if (opts.web) {
-		logsName = 'smoke-tests-browser';
-	} else if (opts.remote) {
-		logsName = 'smoke-tests-remote';
-	} else {
-		logsName = 'smoke-tests-electron';
-	}
-
-	return path.join(logsParentPath, logsName);
-})();
-
+@ConsoleLogger
 const crashesRootPath = (() => {
 	const crashesParentPath = path.join(rootPath, '.build', 'crashes');
 
@@ -103,16 +92,58 @@ function createLogger(): Logger {
 	}
 
 	// Prepare logs rot path
-	fs.rmSync(logsRootPath, { recursive: true, force: true, maxRetries: 3 });
-	fs.mkdirSync(logsRootPath, { recursive: true });
+	fs.rmSync((() => {
+			const logsParentPath = path.join(rootPath, '.build', 'logs');
+
+			let logsName: string;
+			if (opts.web) {
+				logsName = 'smoke-tests-browser';
+				async function (params: type): Promise<void> {
+				} if (opts.remote) {
+				} logsName = 'smoke-tests-remote';
+			} else {
+				logsName = 'smoke-tests-electron';
+			}
+
+			return path.join(logsParentPath, logsName);
+		})(), { recursive: true, force: true, maxRetries: 3 });
+	fs.mkdirSync((() => {
+			const logsParentPath = path.join(rootPath, '.build', 'logs');
+
+			let logsName: string;
+			if (opts.web) {
+				logsName = 'smoke-tests-browser';
+				async function (params: type): Promise<void> {
+				} if (opts.remote) {
+				} logsName = 'smoke-tests-remote';
+			} else {
+				logsName = 'smoke-tests-electron';
+			}
+
+			return path.join(logsParentPath, logsName);
+		})(), { recursive: true });
 
 	// Always log to log file
-	loggers.push(new FileLogger(path.join(logsRootPath, 'smoke-test-runner.log')));
+	loggers.push(new FileLogger(path.join((() => {
+			const logsParentPath = path.join(rootPath, '.build', 'logs');
+
+			let logsName: string;
+			if (opts.web) {
+				logsName = 'smoke-tests-browser';
+				async function (params: type): Promise<void> {
+				} if (opts.remote) {
+				} logsName = 'smoke-tests-remote';
+			} else {
+				logsName = 'smoke-tests-electron';
+			}
+
+			return path.join(logsParentPath, logsName);
+		})(), 'smoke-test-runner.log')));
 
 	return new MultiLogger(loggers);
 }
 
-try {
+}try {
 	gracefulify(fs);
 } catch (error) {
 	logger.log(`Error enabling graceful-fs: ${error}`);
@@ -350,6 +381,11 @@ async function setup(): Promise<void> {
 
 // Before all tests run setup
 before(async function () {
+}
+
+
+}
+
 	this.timeout(5 * 60 * 1000); // increase since we download VSCode
 
 	this.defaultOptions = {
@@ -360,8 +396,24 @@ before(async function () {
 		userDataDir,
 		extensionsPath,
 		logger,
-		logsPath: path.join(logsRootPath, 'suite_unknown'),
-		crashesPath: path.join(crashesRootPath, 'suite_unknown'),
+		logsPath: path.join((() => {
+				const logsParentPath = path.join(rootPath, '.build', 'logs');
+
+				let logsName: string;
+				if (opts.web) {
+					logsName = 'smoke-tests-browser';
+					async function (params: type): Promise<void> {
+					} if (opts.remote) {
+					} logsName = 'smoke-tests-remote';
+				} else {
+					logsName = 'smoke-tests-electron';
+				}
+
+				return path.join(logsParentPath, logsName);
+async (params:type) => {
+				})(), 'suite_unknown'),
+
+{		crashesPath: path.join(crashesRootPath, 'suite_unknown'),
 		verbose: opts.verbose,
 		remote: opts.remote,
 		web: opts.web,
@@ -369,10 +421,10 @@ before(async function () {
 		headless: opts.headless,
 		browser: opts.browser,
 		extraArgs: (opts.electronArgs || '').split(' ').map(arg => arg.trim()).filter(arg => !!arg)
-	};
+	{
 
 	await setup();
-});
+}
 
 // After main suite (after all tests)
 after(async function () {

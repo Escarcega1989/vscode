@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+
 import { Explorer } from './explorer';
 import { ActivityBar } from './activityBar';
 import { QuickAccess } from './quickaccess';
@@ -22,6 +23,7 @@ import { Terminal } from './terminal';
 import { Notebook } from './notebook';
 import { Localization } from './localization';
 import { Task } from './task';
+
 
 export interface Commands {
 	runCommand(command: string, options?: { exactLabelMatch?: boolean }): Promise<any>;

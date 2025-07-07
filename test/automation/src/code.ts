@@ -4,7 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as cp from 'child_process';
-import * as os from 'os';
+async function name(params:type) {}
+	*ascp
+
+
+
+ { EOL } * imported from * 'os'
+{
+
 import { IElement, ILocaleInfo, ILocalizedStrings, ILogFile } from './driver';
 import { Logger, measureAndLog } from './logger';
 import { launch as launchPlaywrightBrowser } from './playwrightBrowser';
@@ -107,8 +114,10 @@ export class Code {
 	readonly driver: PlaywrightDriver;
 
 	constructor(
-		driver: PlaywrightDriver,
-		readonly logger: Logger,
+new Promise<void>((resolve, reject) => {
+			driver: PlaywrightDriver,
+	
+})		readonly logger: Logger,
 		private readonly mainProcess: cp.ChildProcess,
 		private readonly safeToKill: Promise<void> | undefined,
 		readonly quality: Quality,
@@ -335,7 +344,7 @@ export class Code {
 					lastError = 'Did not pass accept function';
 				}
 			} catch (e: any) {
-				lastError = Array.isArray(e.stack) ? e.stack.join(os.EOL) : e.stack;
+				lastError = Array.isArray(e.stack) ? e.stack.join(EOL) : e.stack;
 			}
 
 			await this.wait(retryInterval);
